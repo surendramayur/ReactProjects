@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Cockpit from '../components/Cockpit/Cockpit';
 import classes from './App.css';
-//import Radium, { StyleRoot } from 'radium';
 import Persons from '../components/Persons/Persons';
 
 
@@ -26,9 +25,6 @@ class App extends Component {
     const person = {
       ...this.state.persons[personIndex]
     };
-
-    //alternative
-    //const person = Object.assign({}, this.state.persons[personIndex]);
 
     person.name = event.target.value;
 
@@ -57,23 +53,19 @@ class App extends Component {
       persons = <Persons 
           persons={this.state.persons}
           clicked={this.deletePersonHandler}
-          changed={this.nameChangedHandler} />;
-      
-    }
-    
+          changed={this.nameChangedHandler} />;      
+    }    
     
     return (
       <div className={classes.App} >
           <Cockpit 
+            appTitle={this.props.title}
             showPersons={this.state.showPersons}
             persons={this.state.persons}
             clicked={this.togglePersonsHandler} />
           {persons}
         </div>
-    );
-  
-  // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hi, I\'m a React App!!!'));
-
+    );  
   }
 }
 
