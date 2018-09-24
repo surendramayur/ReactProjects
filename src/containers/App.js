@@ -5,8 +5,30 @@ import Persons from '../components/Persons/Persons';
 
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    console.log('[App.js] Inside Constructor', props);
+    this.state = {
+      persons: [
+        {id: 'ewq', name: 'Mayur', age: 28},
+        {id: 'asd', name: 'Maya', age: 29},
+        {id: 'zxc', name: 'Manu', age: 30},      
+      ],
+      otherState: 'some other value',
+      showPersons: false
+    }
+  }
 
-  state = {
+  componentWillMount() {
+    console.log('[App.js] Inside componentWillMount');
+  }
+
+  componentDidMount () {
+    console.log('[App.js] Inside componentDidMount');
+  }
+  
+
+  /* state = {
     persons: [
       {id: 'ewq', name: 'Mayur', age: 28},
       {id: 'asd', name: 'Maya', age: 29},
@@ -14,7 +36,7 @@ class App extends Component {
     ],
     otherState: 'some other value',
     showPersons: false
-  }
+  } */
 
   nameChangedHandler = (event, id) => {
 
@@ -47,6 +69,8 @@ class App extends Component {
   }
 
   render() {
+    console.log('[App.js] Inside render');
+
     let persons = null;    
 
     if (this.state.showPersons) {
